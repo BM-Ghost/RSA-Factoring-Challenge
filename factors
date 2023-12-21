@@ -5,12 +5,15 @@ import math
 
 
 def factorize(number):
-    for i in range(2, int(math.sqrt(number)) + 1):
+    if number % 2 == 0:
+        print(f"{number}=2*{number // 2}")
+        return
+
+    for i in range(3, int(math.sqrt(number)) + 1, 2):
         if number % i == 0:
-            factor1 = i
-            factor2 = number // i
-            print(f"{number}={factor2}*{factor1}")
+            print(f"{number}={i}*{number // i}")
             return
+
     print(f"{number}=1*{number}")
 
 
@@ -28,3 +31,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

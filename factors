@@ -6,8 +6,10 @@ import math
 
 def factorize(number):
     for i in range(2, int(math.sqrt(number)) + 1):
-        while number % i == 0:
-            print(f"{number}={i}*{number // i}")
+        if number % i == 0:
+            factor1 = i
+            factor2 = number // i
+            print(f"{number}={factor2}*{factor1}")
             return
     print(f"{number}=1*{number}")
 
@@ -21,10 +23,7 @@ def main():
     with open(file_path, "r") as file:
         for line in file:
             number = int(line)
-            if number == 2:
-                print("2=1*2")
-            else:
-                factorize(number)
+            factorize(number)
 
 
 if __name__ == "__main__":

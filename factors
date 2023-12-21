@@ -7,11 +7,9 @@ import math
 def factorize(number):
     for i in range(2, int(math.sqrt(number)) + 1):
         if number % i == 0:
-            factor1 = i
-            factor2 = number // i
-            print(f"{number}={factor1}*{factor2}")
+            print(f"{number}={i}*{number // i}")
             return
-    print(f"{number}=1*{number}")
+    print(f"{number}={1}*{number}")
 
 
 def main():

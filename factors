@@ -1,28 +1,25 @@
 #!/usr/bin/python3
-
+"""Factorizing numbers."""
 import sys
-import math
 
+def fun():
+    try:
+        revfile = sys.argv[1]
+        with open(revfile) as f:
+            for revnumber in f:
+                revnumber = int(revnumber)
+                if revnumber % 2 == 0:
+                        print("{}={}*{}".format(revnumber, revnumber // 2, 2))
+                        continue
+                i = 3
+                while i < revnumber // 2:
+                    if revnumber % i == 0:
+                        print("{}={}*{}".format(revnumber, revnumber // i, i))
+                        break
+                    i = i + 2
+                if i == (revnumber // 2) + 1:
+                    print("{}={}*{}".format(revnumber, revnumber, 1))
+    except (IndexError):
+        pass
 
-def factorize(number):
-    for i in range(2, int(math.sqrt(number)) + 1):
-        if number % i == 0:
-            print(f"{number}={i}*{number // i}")
-            return
-    print(f"{number}={1}*{number}")
-
-
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: python factors.py <file>")
-        return
-
-    file_path = sys.argv[1]
-    with open(file_path, "r") as file:
-        for line in file:
-            number = int(line)
-            factorize(number)
-
-
-if __name__ == "__main__":
-    main()
+fun()
